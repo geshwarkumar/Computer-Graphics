@@ -1,0 +1,58 @@
+/*C PROGRAM TO DRAW CIRCLE USING BRESHEM ALGORITHM
+-GESHWAR KUMAR
+-29-31/07/2017*/
+#include<graphics.h>
+//#include<math.h>
+void main(){
+	/*DECLARATION*/
+	int *gd=DETECT, *gm ;
+	int x, y, xinc=0, yinc=0 ;
+	int steps, radius,iter ;
+	/*INITIATE GRAPHICS*/
+	initgraph(&gd, &gm, "C:\\TC\\BGI");
+	/*CLEAR OUTPUT SCREEN*/
+	cleardevice();
+	radius = 100 ;
+	x = 0 , y = 100 ;
+
+	steps = 3 - (2 * radius) ;
+	//printf("%d => %d",radius,steps);
+	/*if(steps < 0){
+		xinc = 1 ;
+		yinc = 0 ;
+		steps = steps + (4 * x) + 6 ;
+
+	}
+	else{
+		xinc = 1 ;
+		yinc = 1 ;
+		steps = steps + 4 * (x - y) + 10 ;
+	} */
+	//putpixel(x,y,RED);
+	//while(x != y){
+	for(iter=0;iter<y;iter++){
+		putpixel(x,y,WHITE);
+		putpixel(y,x,RED);
+		printf("%d<=>%d",x,y);
+		//putpixel(-y,x,CYAN);
+		if(steps < 0){
+			xinc = 1 ;
+			yinc = 0 ;
+			steps = steps + (4 * x) + 6 ;
+		}
+		else{
+			xinc = 1 ;
+			yinc = 1 ;
+			steps = steps + 4 * (x - y) + 10 ;
+		}
+		x = x + xinc ;
+		y = y - yinc ;
+		//printf("%d-%d\n",x,y);
+		//putpixel(x,y,WHITE);
+		/*putpixel(y,x,RED);
+		putpixel(-y,x,WHITE);*/
+	}
+
+getch();
+closegraph();
+}

@@ -1,0 +1,48 @@
+/*C PROGRAM TO DRAW CIRCLE USING MIDPOINT ALGORITHM
+-GESHWAR KUMAR
+-03/08/2017*/
+#include<graphics.h>
+//#include<math.h>
+void main(){
+	/*DECLARATION*/
+	int *gd=DETECT, *gm ;
+	int x, y, xinc=0, yinc=0 ;
+	int steps, radius,iter,maxx,maxy,midx,midy ;
+	/*INITIATE GRAPHICS*/
+	initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
+	/*CLEAR OUTPUT SCREEN*/
+	cleardevice();
+	maxx = getmaxx();
+	maxy = getmaxy();
+	midx = maxx/2;
+	midy = maxy/2;
+	radius = 200 ;
+	x = midx , y = radius+midy ;
+
+	steps = (5 / 4) - radius ;
+
+	for(iter=0;iter<y;iter++){
+		putpixel(x,y,WHITE);
+		putpixel(y,x,RED);
+		//putpixel(-y,x,CYAN);
+		if(steps < 0){
+			xinc = 1 ;
+			yinc = 0 ;
+			steps = steps + (2 * x) + 3 ;
+		}
+		else{
+			xinc = 1 ;
+			yinc = 1 ;
+			steps = steps + 2 * (x - y) + 5 ;
+		}
+		x = x + xinc ;
+		y = y - yinc ;
+		//printf("%d-%d\n",x,y);
+		//putpixel(x,y,WHITE);
+		/*putpixel(y,x,RED);
+		putpixel(-y,x,WHITE);*/
+	}
+
+getch();
+closegraph();
+}
